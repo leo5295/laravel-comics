@@ -18,3 +18,10 @@ Route::get('/', function () {
     $links = config('db.links');
     return view('home', compact('series', 'links'));
 });
+
+Route::get('/infocomics/{param}', function ($param) {
+    $series = config('db.series');
+    $links = config('db.links');
+    $single_comic = $series[$param];
+    return view('infocomics', compact('single_comic', 'links'));
+})->name('single');
